@@ -7,13 +7,15 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        const email = event.target.email.value;
-        const password = event.target.password.value;
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
         console.log(email, password);
         signIn(email, password)
         .then(result=>{
             const user = result.user;
             console.log(user);
+            form.reset();
         }).catch(error=>{
             console.log(error.message);
         })
